@@ -1,0 +1,4 @@
+install.packages(c("flexdashboard", "matrixStats", "plotly", "psych", "QRM", "qrmdata", "quadprog", "quantreg", "shiny", "xts", "zoo"))
+
+shinytest 
+
