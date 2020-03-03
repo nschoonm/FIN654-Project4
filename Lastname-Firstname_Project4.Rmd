@@ -1087,10 +1087,48 @@ Column
 ### Skills and Tools
 
 1. Packages: ggplot, scales, quadprog, quantreg, shiny, flexdashboard, qrmdata, xts, matrixStats, zoo, QRM, plotly, and psych
-2. 
-* :
-* :
-* :
+
+Skills used for data exploration and analytics are the following -
+
+1. head() to return the first part of a vector, matrix, table, data frame or function.
+2. tail() to return the last part of a vector, matrix, table, data frame or function.
+3. summary() to produce result summaries of the results of various model fitting functions.
+4. format() to format an R object for pretty printing.
+5. diff() to return suitably lagged and iterated differences.
+6. ifelse() to return a value with the same shape as test which is filled with elements selected from either yes or no depending on whether the element of test is TRUE or FALSE.
+7. function() to create and store a function for data analysis.
+8. round() to round the values in its first argument to the specified number of decimal places (default 0).
+9. mean() is a generic function for the (trimmed) arithmetic mean.
+10. ts() to create time-series objects.
+11. rollapply() to apply a function to rolling margins of an array.
+12. merge() to merge two data frames by common columns or row names, or do other versions of database join operations.
+13. seq() to generate regular sequences.
+14. rq() to perform a quantile regression on a design matrix, x, of explanatory variables and a vector, y, of responses.
+15. lm() can be used to carry out regression, single stratum analysis of variance and analysis of covariance.
+16. Plot() to make a map of the values of a Raster* object, or make a scatterplot of their values.
+17. split() to divide the data in the vector x into the groups defined by f. 
+18. lapply() to return a list of the same length as X, each element of which is the result of applying FUN to the corresponding element of X.
+19. image_animate() manipulate or combine multiple frames of an image. 
+20. ncol() returns the number of columns.
+21. cor() computes the variance of x and the covariance or correlation of x and y.
+22. apply.monthly() applies a specified function to each distinct period in a given time series object.
+22. quantile() produces sample quantiles corresponding to the given probabilities.
+23. apply.monthly() applies a specified function to each distinct period in a given time series object.
+24. max() returns the maximum of all values in a vector by passing codemax as fn argument to univar function.
+
+Skills used in packaging and express of data in terms of graphs and tables are the following -
+
+1. ggplot()/ggplot2() to generate the graph based on the vectors.
+2. kable() to create a data table.
+3. table() returns a contingency table.
+4. xtable to create LaTeX formatted and rendered table.
+5. ggplotly() to convert a ggplot2::ggplot() object to a plotly object.
+6. autoplot.zoo() takes a zoo object and converts it into a data frame (intended for ggplot2)
+7. ggtitle() to format chart titles.
+8. ylim() to to set the limits of the y axis.
+9. coredata() to extract the core data contained in a (more complex) object and replacing it.
+10. acf() to compute (and by default plots) estimates of the autocovariance or autocorrelation function.
+11. pacf() is the function used for the partial autocorrelations.
 
 
 Column 
@@ -1100,21 +1138,39 @@ Column
 
 For the working capital accounts:
 
-No constraints??
+No constraints:
 
-* :... million denominated in euros 
-* :... million in nickel
-* :... million in copper
-* :... million in aluminium
+```{r echo = FALSE}
+library(scales)
+weights[ind,]
+name <- colnames(weights)
+posn <- ifelse((weights[ind,]<0), "go short (sell)", "go long, (buy)")
+value <- percent(abs(weights[ind,]))
+weights[ind,]*250000000
+```
+
+* 250,000,000 denominated in euros
+* Buy 250,236,183 in nickel
+* Sell 1,577,898 in copper
+* Buy 1,341,715 in aluminium
 
 
-With constraints - specify the constraint??
+With constraints:
 
-* :... million denominated in euros 
-* :... million in nickel
-* :... million in copper
-* :... million in aluminium
+Constraint: Minimum Variance Portfolio
+```{r echo = FALSE}
+library(scales)
+weights[ind2,]
+name <- colnames(weights)
+posn <- ifelse((weights[ind2,]<0), "go short (sell)", "go long, (buy)")
+value <- percent(abs(weights[ind2,]))
+weights[ind2,]*250000000
+```
 
+* 250,000,000 denominated in euros
+* Buy 21,438,648 in nickel
+* Buy 113,727,083 in copper
+* Buy 114,834,269 in aluminium
 
 ** SAMPLE CODE OUTPUT **
 
