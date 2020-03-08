@@ -1233,7 +1233,7 @@ Column
 
 - The working capital account of \$250 million euro should be allocated as follows: buy \$xxx million in nickel, \$yyy million in copper, \$zzz million in aluminium.
 
-- There is a strong correlation (0.??) between Metal-A (?) and Metal-B (?) due to shared applications.
+- There is a strong correlation (0.89) between Metal-A (nickel) and Metal-B (copper) due to shared applications.
 
 - Creation of cupronickel alloy which is used for desalinisation due its high resistant to corrosion, minting, armaments, marine engineering, electrical applications, and many others, e.g. the repair of fan blades found in geothermal power plants. 
     
