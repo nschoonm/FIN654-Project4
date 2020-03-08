@@ -801,7 +801,7 @@ So that ...
 - is calculated as ...
 
 ```{r}
-mu.free <- .002 ## input value of daily risk-free interest rate
+mu.free <- 0.79/252 ## input value of daily risk-free interest rate
 mu.free
 ```
 
@@ -1177,6 +1177,20 @@ weights[ind2,]*250000000
 * Buy 21,438,648 in nickel
 * Buy 113,727,083 in copper
 * Buy 114,834,269 in aluminium
+
+Constraint: No Short Portfolio
+
+```{r echo = FALSE}
+library(scales)
+weights.x[inx,]
+name <- colnames(weights.x)
+posn <- ifelse((weights.x[inx,]<0), "go short (sell)", "go long, (buy)")
+value <- percent(abs(weights.x[inx,]))
+weights.x[inx,]*250000000
+```
+
+* 250,000,000 denominated in euros
+* Buy 250,000,000 in nickel
 
 ** SAMPLE CODE OUTPUT **
 
