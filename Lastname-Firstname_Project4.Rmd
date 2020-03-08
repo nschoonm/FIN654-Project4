@@ -186,6 +186,33 @@ We continue to expand our range of production capabilities. Now we add some inte
 
 **THIS PROJECT ALSO SERVES AS A TEMPLATE FOR THE FINAL PROJECT**
 
+```{r Get current directory}
+# Get the directory so we can run this from anywhere
+# Get the script directory from R when running in R
+if(rstudioapi::isAvailable())
+{
+  script.path <- rstudioapi::getActiveDocumentContext()$path
+  script.dir <- dirname(script.path)
+}
+if(!exists("script.dir"))
+{
+  script.dir <- getSrcDirectory(function(x) {x})
+}
+```
+
+```{r Working Directory and Data setup}
+# Set my working directory
+# There is a "data" folder here with the files and the script
+setwd(script.dir)
+# Double check the working directory
+getwd()
+# Error check to ensure the working directory is set up and the data
+# directory exists inside it.  Its required for this file
+if(dir.exists(paste(getwd(),"/data", sep = "")) == FALSE) {
+  stop("Data directory does not exist. Make sure the working directory
+       is set using setwd() and the data folder exists in it.")
+}
+```
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
@@ -1031,7 +1058,7 @@ options(digits=4)
 p <- p + geom_abline(intercept = mu.free, slope = (mu.P[ind]-mu.free)/sigma.P[ind], colour = "red")
 p <- p + geom_point(aes(x = sigma.P[ind], y = mu.P[ind], pch="*")) 
 p <- p + geom_point(aes(x = sigma.P[ind2], y = mu.P[ind2], pch="-")) ## show min var portfolio
-p <- p + annotate("text", x = sd.R[1], y = mean.R[1], label = names.R[1]) + annotate("text", x = sd.R[2], y = mean.R[2], label = names.R[2]) + annotate("text", x = sd.R[3], y = mean.R[3], label = names.R[3])
+p <- p + annotate("text", x = sd.R[1], y = 0.0001+mean.R[1], label = names.R[1]) + annotate("text", x = sd.R[2], y = 0.00025+mean.R[2], label = names.R[2]) + annotate("text", x = sd.R[3], y = -0.0001+mean.R[3], label = names.R[3])
 p	### ggplotly(p)
 })
 ```
@@ -1077,7 +1104,7 @@ options(digits=4)
 p <- p + geom_abline(intercept = mu.free, slope = (mu.P[inx]-mu.free)/sigma.P[inx], colour = "red")
 p <- p + geom_point(aes(x = sigma.P[inx], y = mu.P[inx], pch="+")) 
 p <- p + geom_point(aes(x = sigma.P[inx2], y = mu.P[inx2], pch="-")) ## show min var portfolio
-p <- p + annotate("text", x = sd.R[1], y = mean.R[1], label = names.R[1]) + annotate("text", x = sd.R[2], y = mean.R[2], label = names.R[2]) + annotate("text", x = sd.R[3], y = mean.R[3], label = names.R[3])
+p <- p + annotate("text", x = sd.R[1], y = 0.0001+mean.R[1], label = names.R[1]) + annotate("text", x = sd.R[2], y = 0.00025+mean.R[2], label = names.R[2]) + annotate("text", x = sd.R[3], y = -0.0001+mean.R[3], label = names.R[3])
 p	### ggplotly(p)
 })
 ```
