@@ -996,7 +996,7 @@ renderPlotly({
                        colour = "red")
   p <- p + geom_point(aes(x = qrisk.P[ind], y = mu.P[ind])) 
   p <- p + geom_point(aes(x = qrisk.P[ind2], y = mu.P[ind2])) 
-  ggplotly(p)
+  p	### ggplotly(p)
 })
 ```
 
@@ -1064,7 +1064,7 @@ p <- p + geom_abline(intercept = mu.free, slope = (mu.P[ind]-mu.free)/sigma.P[in
 p <- p + geom_point(aes(x = sigma.P[ind], y = mu.P[ind], pch="*")) 
 p <- p + geom_point(aes(x = sigma.P[ind2], y = mu.P[ind2], pch="-")) ## show min var portfolio
 p <- p + annotate("text", x = sd.R[1], y = 0.0001+mean.R[1], label = names.R[1]) + annotate("text", x = sd.R[2], y = 0.00025+mean.R[2], label = names.R[2]) + annotate("text", x = sd.R[3], y = -0.0001+mean.R[3], label = names.R[3])
-ggplotly(p)
+p	### ggplotly(p)
 })
 ```
 
@@ -1110,7 +1110,7 @@ p <- p + geom_abline(intercept = mu.free, slope = (mu.P[inx]-mu.free)/sigma.P[in
 p <- p + geom_point(aes(x = sigma.P[inx], y = mu.P[inx], pch="+")) 
 p <- p + geom_point(aes(x = sigma.P[inx2], y = mu.P[inx2], pch="-")) ## show min var portfolio
 p <- p + annotate("text", x = sd.R[1], y = 0.0001+mean.R[1], label = names.R[1]) + annotate("text", x = sd.R[2], y = 0.00025+mean.R[2], label = names.R[2]) + annotate("text", x = sd.R[3], y = -0.0001+mean.R[3], label = names.R[3])
-ggplotly(p)
+p	### ggplotly(p)
 })
 ```
 
