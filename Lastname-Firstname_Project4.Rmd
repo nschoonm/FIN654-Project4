@@ -1089,6 +1089,7 @@ ind3 <-  (mu.P > mu.P[ind2]) ## finally the efficient frontier
 col.P <- ifelse(mu.P > mu.P[ind2], "blue", "grey")
 sigma.mu.df$col.P <- col.P
 mark_default_slop <- ((mu.P[ind]-mu.free)/sigma.P[ind])
+(mark_default_slop)
 renderPlotly({
   p <- ggplot(sigma.mu.df, aes(x = sigma.P, y = mu.P, group = 1)) +
     geom_line(aes(colour=col.P, group = col.P)) +
@@ -1140,6 +1141,7 @@ indx3 <-  (mu.P > mu.P[inx2]) ## finally the efficient frontier
 col.P <- ifelse(mu.P > mu.P[inx2], "blue", "grey")
 sigma.mu.df$col.P <- col.P
 mark_no_short_slope <- ((mu.P[inx]-mu.free)/sigma.P[inx])
+(mark_no_short_slope)
 renderPlotly({
   p <- ggplot(sigma.mu.df, aes(x = sigma.P, y = mu.P, group = 1)) +
     geom_line(aes(colour=col.P, group = col.P)) +
