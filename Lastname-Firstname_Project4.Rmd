@@ -984,14 +984,19 @@ ind3 <-  (mu.P > mu.P[ind2]) ## find the efficient frontier (blue)
 col.P <- ifelse(mu.P > mu.P[ind2], "blue", "grey")
 weights.extr <- weights[ind,] # for use in calculating tengency risk measures
 qrisk.mu.df$col.P <- col.P
+eff_slope <- ((mu.P[ind]-mu.free) / qrisk.P[ind])
 renderPlotly({
-  p <- ggplot(qrisk.mu.df, aes(x = qrisk.P, y = mu.P, group = 1)) + geom_line(aes(colour= col.P, group = col.P)) + scale_colour_identity()  
+  p <- ggplot(qrisk.mu.df, aes(x = qrisk.P, y = mu.P, group = 1))
+  p <- p + geom_line(aes(colour= col.P, group = col.P))
+  p <- p + scale_colour_identity()  
   p <- p + geom_point(aes(x = 0, y = mu.free), colour = "red")
   options(digits=3)
-  p <- p + geom_abline(intercept = mu.free, slope = (mu.P[ind]-mu.free)/qrisk.P[ind], colour = "red")
+  p <- p + geom_abline(intercept = mu.free, 
+                       slope = eff_slope,
+                       colour = "red")
   p <- p + geom_point(aes(x = qrisk.P[ind], y = mu.P[ind])) 
   p <- p + geom_point(aes(x = qrisk.P[ind2], y = mu.P[ind2])) 
-  p	##ggplotly(p)
+  ggplotly(p)
 })
 ```
 
@@ -1059,7 +1064,7 @@ p <- p + geom_abline(intercept = mu.free, slope = (mu.P[ind]-mu.free)/sigma.P[in
 p <- p + geom_point(aes(x = sigma.P[ind], y = mu.P[ind], pch="*")) 
 p <- p + geom_point(aes(x = sigma.P[ind2], y = mu.P[ind2], pch="-")) ## show min var portfolio
 p <- p + annotate("text", x = sd.R[1], y = 0.0001+mean.R[1], label = names.R[1]) + annotate("text", x = sd.R[2], y = 0.00025+mean.R[2], label = names.R[2]) + annotate("text", x = sd.R[3], y = -0.0001+mean.R[3], label = names.R[3])
-p	### ggplotly(p)
+ggplotly(p)
 })
 ```
 
@@ -1084,7 +1089,7 @@ weights.x <-  matrix(0, nrow=300, ncol = ncol(R)) ## storage for portfolio weigh
 colnames(weights.x) <- names.R
 for (i in 1:length(mu.P))
 {
-  bvec <- c(1,mu.P[i],rep(0,3))  ## constraint vector
+  bvec <- c(1,mu.P[i],rep(0,3)) ## no short sales
   result <- solve.QP(Dmat=2*cov.R,dvec=rep(0,3),Amat=Amat,bvec=bvec,meq=2)
   sigma.P[i] <- sqrt(result$value)
   weights.x[i,] <- result$solution
@@ -1105,7 +1110,7 @@ p <- p + geom_abline(intercept = mu.free, slope = (mu.P[inx]-mu.free)/sigma.P[in
 p <- p + geom_point(aes(x = sigma.P[inx], y = mu.P[inx], pch="+")) 
 p <- p + geom_point(aes(x = sigma.P[inx2], y = mu.P[inx2], pch="-")) ## show min var portfolio
 p <- p + annotate("text", x = sd.R[1], y = 0.0001+mean.R[1], label = names.R[1]) + annotate("text", x = sd.R[2], y = 0.00025+mean.R[2], label = names.R[2]) + annotate("text", x = sd.R[3], y = -0.0001+mean.R[3], label = names.R[3])
-p	### ggplotly(p)
+ggplotly(p)
 })
 ```
 
