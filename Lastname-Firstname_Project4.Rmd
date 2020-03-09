@@ -430,7 +430,8 @@ Column {.tabset .tabset-fade}
 renderPlotly({
   returns1 <- returns[,1]
   colnames(returns1) <- "Returns" #kluge to coerce column name for df
-  returns1.df <- data.frame(Returns = returns1[,1], Distribution = rep("Historical", each = length(returns1)))
+  returns1.df <- data.frame(Returns = returns1[,1], 
+                            Distribution = rep("Historical", each = length(returns1)))
   
   new_alpha1 <- input$alphaq
   alpha1 <- ifelse(new_alpha1>1,0.99,ifelse(new_alpha1<0,0.001,new_alpha1))
@@ -452,7 +453,8 @@ renderPlotly({
     geom_vline(aes(xintercept = VaR1.hist), linetype = "dashed", size = 1, color = "firebrick1") + 
     geom_vline(aes(xintercept = ES1.hist), size = 1, color = "firebrick1") +
     annotate("text", x = 1+ VaR1.hist, y = VaR1.y*1.05, label = VaR1.text) +
-    annotate("text", x = 0.5+ ES1.hist, y = VaR1.y*1.1, label = ES1.text) +     scale_fill_manual(values = "dodgerblue4")
+    annotate("text", x = 0.5+ ES1.hist, y = VaR1.y*1.1, label = ES1.text) +
+    scale_fill_manual(values = "dodgerblue4")
   p1	##ggplotly(p)
   })
 ```
@@ -463,7 +465,8 @@ renderPlotly({
 renderPlotly({
   returns2 <- returns[,2]
   colnames(returns2) <- "Returns" #kluge to coerce column name for df
-  returns2.df <- data.frame(Returns = returns2[,1], Distribution = rep("Historical", each = length(returns2)))
+  returns2.df <- data.frame(Returns = returns2[,1], 
+                            Distribution = rep("Historical", each = length(returns2)))
   
   alpha2 <- ifelse(input$alphaq>1,0.99,ifelse(input$alphaq<0,0.001,input$alphaq))
   
@@ -484,7 +487,8 @@ renderPlotly({
     geom_vline(aes(xintercept = VaR2.hist), linetype = "dashed", size = 1, color = "firebrick1") + 
     geom_vline(aes(xintercept = ES2.hist), size = 1, color = "firebrick1") +
     annotate("text", x = 1+VaR2.hist, y = VaR2.y*1.05, label = VaR2.text) +
-    annotate("text", x = 0.5+ES2.hist, y = VaR2.y*1.1, label = ES2.text)+     scale_fill_manual(values = "dodgerblue4")
+    annotate("text", x = 0.5+ES2.hist, y = VaR2.y*1.1, label = ES2.text) + 
+    scale_fill_manual(values = "dodgerblue4")
   p2	##ggplotly(p)
 })
 ```
@@ -495,7 +499,8 @@ renderPlotly({
 renderPlotly({
   returns3 <- returns[,3]
   colnames(returns3) <- "Returns" #kluge to coerce column name for df
-  returns3.df <- data.frame(Returns = returns3[,1], Distribution = rep("Historical", each = length(returns3)))
+  returns3.df <- data.frame(Returns = returns3[,1], 
+                            Distribution = rep("Historical", each = length(returns3)))
   ggplot(returns3.df, aes(x = Returns, fill = Distribution)) + geom_density(alpha = 0.8)
   
   alpha3 <- ifelse(input$alphaq>1,0.99,ifelse(input$alphaq<0,0.001,input$alphaq))
@@ -517,7 +522,8 @@ renderPlotly({
     geom_vline(aes(xintercept = VaR3.hist), linetype = "dashed", size = 1, color = "firebrick1") + 
     geom_vline(aes(xintercept = ES3.hist), size = 1, color = "firebrick1") +
     annotate("text", x = 1+VaR3.hist, y = VaR3.y*1.05, label = VaR3.text) +
-    annotate("text", x = 0.5+ES3.hist, y = VaR3.y*1.1, label = ES3.text) +     scale_fill_manual(values = "dodgerblue4")
+    annotate("text", x = 0.5+ES3.hist, y = VaR3.y*1.1, label = ES3.text) +
+    scale_fill_manual(values = "dodgerblue4")
   p3	##ggplotly(p)
 })
 
@@ -556,7 +562,12 @@ data_moments <- function(data){
   IQR.r <- colIQRs(data)
   skewness.r <- skewness(data)
   kurtosis.r <- kurtosis(data)
-  result <- data.frame(mean = mean.r, median = median.r, std_dev = sd.r, IQR = IQR.r, skewness = skewness.r, kurtosis = kurtosis.r)
+  result <- data.frame(mean = mean.r, 
+                       median = median.r, 
+                       std_dev = sd.r, 
+                       IQR = IQR.r, 
+                       skewness = skewness.r, 
+                       kurtosis = kurtosis.r)
   return(result)
 }
 # Run data_moments()
@@ -639,7 +650,9 @@ plot.zoo(R.corr.vols, main= "Monthly Correlations and Volatilities")
 
 ```{r}
 renderPlot({ 
-  plot(summary(fit.rq.nickel.copper), parm = "copper.vols", main = "nickel-copper correlation sensitivity to copper volatility")
+  plot(summary(fit.rq.nickel.copper), 
+       parm = "copper.vols", 
+       main = "nickel-copper correlation sensitivity to copper volatility")
 })
 ```
 
@@ -688,7 +701,13 @@ VaR.text <- paste("Value at Risk =\n", round(VaR.hist, 2)) # ="VaR"&c12
 ES.text <- paste("Expected Shortfall \n=", round(ES.hist, 2))
 title.text <- paste(round(alpha.tolerance*100, 0), "% Loss Limits")
 renderPlotly({
-  p <- ggplot(loss.rf.df, aes(x = Loss, fill = Distribution)) + geom_histogram(alpha = 0.8, bins=30) + geom_vline(aes(xintercept = VaR.hist), linetype = "dashed", size = 1, color = "blue") + geom_vline(aes(xintercept = ES.hist), size = 1, color = "blue") + annotate("text", x = VaR.hist, y = 40, label = VaR.text) + annotate("text", x = ES.hist, y = 20, label = ES.text) + xlim(0, 500) + ggtitle(title.text)
+  p <- ggplot(loss.rf.df, aes(x = Loss, fill = Distribution)) +
+    geom_histogram(alpha = 0.8, bins=30) +
+    geom_vline(aes(xintercept = VaR.hist), linetype = "dashed", size = 1, color = "blue") +
+    geom_vline(aes(xintercept = ES.hist), size = 1, color = "blue") +
+    annotate("text", x = VaR.hist, y = 40, label = VaR.text) +
+    annotate("text", x = ES.hist, y = 20, label = ES.text) +
+    xlim(0, 500) + ggtitle(title.text)
   p	##ggplotly(p)
 })
 ```
@@ -749,19 +768,24 @@ lower <- grid.0            # store lower confidence interval
 u <- seq(umin, umax, length = nint) # threshold u grid
 alpha <- 0.95                  # confidence level
 for (i in 1:nint) {
-    data <- data[data > u[i]]  # subset data above thresholds
-    e[i] <- mean(data - u[i])  # calculate mean excess of threshold
-    sdev <- sqrt(var(data))    # standard deviation
-    n <- length(data)          # sample size of subsetted data above thresholds
-    upper[i] <- e[i] + (qnorm((1 + alpha)/2) * sdev)/sqrt(n) # upper confidence interval
-    lower[i] <- e[i] - (qnorm((1 + alpha)/2) * sdev)/sqrt(n) # lower confidence interval
-  }
+  data <- data[data > u[i]]  # subset data above thresholds
+  e[i] <- mean(data - u[i])  # calculate mean excess of threshold
+  sdev <- sqrt(var(data))    # standard deviation
+  n <- length(data)          # sample size of subsetted data above thresholds
+  upper[i] <- e[i] + (qnorm((1 + alpha)/2) * sdev)/sqrt(n) # upper confidence interval
+  lower[i] <- e[i] - (qnorm((1 + alpha)/2) * sdev)/sqrt(n) # lower confidence interval
+}
 mep.df <- data.frame(threshold = u, threshold.exceedances = e, lower = lower, upper = upper)
 loss.excess <- loss.rf[loss.rf > u]
 # Voila the plot => you may need to tweak these limits!
 renderPlotly({
-p <- ggplot(mep.df, aes( x= threshold, y = threshold.exceedances)) + geom_line() + geom_line(aes(x = threshold, y = lower), colour = "red") + geom_line(aes(x = threshold,  y = upper), colour = "red") + annotate("text", x = 400, y = 200, label = "upper 95%") + annotate("text", x = 200, y = 0, label = "lower 5%")
-p	##ggplotly(p)
+  p <- ggplot(mep.df, aes( x= threshold, y = threshold.exceedances)) +
+    geom_line() +
+    geom_line(aes(x = threshold, y = lower), colour = "red") +
+    geom_line(aes(x = threshold, y = upper), colour = "red") +
+    annotate("text", x = 400, y = 200, label = "upper 95%") +
+    annotate("text", x = 200, y = 0, label = "lower 5%")
+  p ##ggplotly(p)
 })
 ```
 
@@ -786,10 +810,12 @@ renderPlotly({
   VaRgpd.text <- paste("GPD: Value at Risk =", round(VaR.gpd, 2))
   ESgpd.text <- paste("Expected Shortfall =", round(ES.gpd, 2))
   title.text <- paste(VaRgpd.text, ESgpd.text, sep = " ")
-  loss.plot <- ggplot(loss.rf.df, aes(x = Loss, fill = Distribution)) + geom_density(alpha = 0.2)
-  loss.plot <- loss.plot + geom_vline(aes(xintercept = VaR.gpd), colour = "blue", linetype = "dashed", size = 0.8)
-  loss.plot <- loss.plot + geom_vline(aes(xintercept = ES.gpd), colour = "blue", size = 0.8) 
-  #+ annotate("text", x = 300, y = 0.0075, label = VaRgpd.text, colour = "blue") + annotate("text", x = 300, y = 0.005, label = ESgpd.text, colour = "blue")
+  loss.plot <- ggplot(loss.rf.df, aes(x = Loss, fill = Distribution)) +
+    geom_density(alpha = 0.2)
+  loss.plot <- loss.plot + 
+    geom_vline(aes(xintercept = VaR.gpd), colour = "blue", linetype = "dashed", size = 0.8)
+  loss.plot <- loss.plot + 
+    geom_vline(aes(xintercept = ES.gpd), colour = "blue", size = 0.8) 
   loss.plot <- loss.plot + xlim(0,500) + ggtitle(title.text)
   loss.plot	##ggplotly(loss.plot)
 })
@@ -823,12 +849,12 @@ So that ...
 
 **Note the `risk-free rate` given is likely incorrect - `RESEARCH AND FIX`**
 
-- obtained from ...
-- and using... number of trading days
-- is calculated as ...
+- obtained from https://www.treasury.gov/resource-center/data-chart-center/interest-rates/pages/textview.aspx?data=yield
+- and using 253 (2020 is a leap year) number of trading days
+- is calculated as (0.79 / 253) or :
 
 ```{r}
-mu.free <- 0.79/252 ## input value of daily risk-free interest rate
+mu.free <- 0.79/253 ## input value of daily risk-free interest rate
 mu.free
 ```
 
@@ -918,7 +944,10 @@ yhat <- x %*% pihat # predicted
 etahat <- quantile(yhat, alpha)
 muhat <- mean(yhat)
 qrisk <- 0
-for (i in 1:length(alpha)) qrisk <- qrisk + w[i] * sum(yhat[yhat < etahat[i]])/(n * alpha[i])
+for (i in 1:length(alpha))
+{
+  qrisk <- qrisk + w[i] * sum(yhat[yhat < etahat[i]])/(n * alpha[i])
+}
 qrisk
 pihat
 ```
@@ -953,7 +982,10 @@ yhat <- x %*% pihat # predicted
 (etahat <- quantile(yhat, alpha))
 (muhat <- mean(yhat))
 qrisk <- 0
-for (i in 1:length(alpha)) qrisk <- qrisk + w[i] * sum(yhat[yhat < etahat[i]])/(n * alpha[i])
+for (i in 1:length(alpha))
+{
+  qrisk <- qrisk + w[i] * sum(yhat[yhat < etahat[i]])/(n * alpha[i])
+}
 qrisk
 pihat
 ```
@@ -1056,15 +1088,20 @@ ind2 <-  (sigma.P == min(sigma.P)) ## find the minimum variance portfolio
 ind3 <-  (mu.P > mu.P[ind2]) ## finally the efficient frontier
 col.P <- ifelse(mu.P > mu.P[ind2], "blue", "grey")
 sigma.mu.df$col.P <- col.P
+mark_default_slop <- ((mu.P[ind]-mu.free)/sigma.P[ind])
 renderPlotly({
-p <- ggplot(sigma.mu.df, aes(x = sigma.P, y = mu.P, group = 1)) + geom_line(aes(colour=col.P, group = col.P)) + scale_colour_identity() # + xlim(0, max(sd.R*1.1))  + ylim(0, max(mean.R)*1.1) + 
-p <- p + geom_point(aes(x = 0, y = mu.free), colour = "red")
-options(digits=4)
-p <- p + geom_abline(intercept = mu.free, slope = (mu.P[ind]-mu.free)/sigma.P[ind], colour = "red")
-p <- p + geom_point(aes(x = sigma.P[ind], y = mu.P[ind], pch="*")) 
-p <- p + geom_point(aes(x = sigma.P[ind2], y = mu.P[ind2], pch="-")) ## show min var portfolio
-p <- p + annotate("text", x = sd.R[1], y = 0.0001+mean.R[1], label = names.R[1]) + annotate("text", x = sd.R[2], y = 0.00025+mean.R[2], label = names.R[2]) + annotate("text", x = sd.R[3], y = -0.0001+mean.R[3], label = names.R[3])
-p	### ggplotly(p)
+  p <- ggplot(sigma.mu.df, aes(x = sigma.P, y = mu.P, group = 1)) +
+    geom_line(aes(colour=col.P, group = col.P)) +
+    scale_colour_identity() # + xlim(0, max(sd.R*1.1))  + ylim(0, max(mean.R)*1.1) + 
+  p <- p + geom_point(aes(x = 0, y = mu.free), colour = "red")
+  options(digits=4)
+  p <- p + geom_abline(intercept = mu.free, slope = mark_default_slop, colour = "red")
+  p <- p + geom_point(aes(x = sigma.P[ind], y = mu.P[ind], pch="*")) 
+  p <- p + geom_point(aes(x = sigma.P[ind2], y = mu.P[ind2], pch="-")) ## show min var portfolio
+  p <- p + annotate("text", x = sd.R[1], y = 0.0001+mean.R[1], label = names.R[1]) +
+    annotate("text", x = sd.R[2], y = 0.00025+mean.R[2], label = names.R[2]) +
+    annotate("text", x = sd.R[3], y = -0.0001+mean.R[3], label = names.R[3])
+  p	### ggplotly(p)
 })
 ```
 
@@ -1102,15 +1139,20 @@ inx2 <-  (sigma.P == min(sigma.P)) ## find the minimum variance portfolio
 indx3 <-  (mu.P > mu.P[inx2]) ## finally the efficient frontier
 col.P <- ifelse(mu.P > mu.P[inx2], "blue", "grey")
 sigma.mu.df$col.P <- col.P
+mark_no_short_slope <- ((mu.P[inx]-mu.free)/sigma.P[inx])
 renderPlotly({
-p <- ggplot(sigma.mu.df, aes(x = sigma.P, y = mu.P, group = 1)) + geom_line(aes(colour=col.P, group = col.P)) + scale_colour_identity() # + xlim(0, max(sd.R*1.1))  + ylim(0, max(mean.R)*1.1) + 
-p <- p + geom_point(aes(x = 0, y = mu.free), colour = "red")
-options(digits=4)
-p <- p + geom_abline(intercept = mu.free, slope = (mu.P[inx]-mu.free)/sigma.P[inx], colour = "red")
-p <- p + geom_point(aes(x = sigma.P[inx], y = mu.P[inx], pch="+")) 
-p <- p + geom_point(aes(x = sigma.P[inx2], y = mu.P[inx2], pch="-")) ## show min var portfolio
-p <- p + annotate("text", x = sd.R[1], y = 0.0001+mean.R[1], label = names.R[1]) + annotate("text", x = sd.R[2], y = 0.00025+mean.R[2], label = names.R[2]) + annotate("text", x = sd.R[3], y = -0.0001+mean.R[3], label = names.R[3])
-p	### ggplotly(p)
+  p <- ggplot(sigma.mu.df, aes(x = sigma.P, y = mu.P, group = 1)) +
+    geom_line(aes(colour=col.P, group = col.P)) +
+    scale_colour_identity() # + xlim(0, max(sd.R*1.1))  + ylim(0, max(mean.R)*1.1) + 
+  p <- p + geom_point(aes(x = 0, y = mu.free), colour = "red")
+  options(digits=4)
+  p <- p + geom_abline(intercept = mu.free, slope = mark_no_short_slope, colour = "red")
+  p <- p + geom_point(aes(x = sigma.P[inx], y = mu.P[inx], pch="+")) 
+  p <- p + geom_point(aes(x = sigma.P[inx2], y = mu.P[inx2], pch="-")) ## show min var portfolio
+  p <- p + annotate("text", x = sd.R[1], y = 0.0001+mean.R[1], label = names.R[1]) +
+    annotate("text", x = sd.R[2], y = 0.00025+mean.R[2], label = names.R[2]) +
+    annotate("text", x = sd.R[3], y = -0.0001+mean.R[3], label = names.R[3])
+  p	### ggplotly(p)
 })
 ```
 
