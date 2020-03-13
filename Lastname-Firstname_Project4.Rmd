@@ -1307,7 +1307,7 @@ Column
 ### Business Remarks
 
 
-- The working capital account of \$250 million euro should be allocated as follows: buy \$xxx million in nickel, \$yyy million in copper, \$zzz million in aluminium.
+- The working capital account of \$250 million euro should be allocated as follows: buy \$21,438,648 million in nickel, \$113,727,083 million in copper, \$114,834,269 million in aluminium.
 
 - There is a strong correlation (0.89) between Metal-A (nickel) and Metal-B (copper) due to shared applications.
 
@@ -1320,7 +1320,11 @@ Column
 
 ### Recommendations
 1. Why did you choose those weights (which model)?
+- Because our portfolio of accounts receivables in the various metals contains only risky assets, we chose the minimum variance portfolio in order to minimize the volatility of the overall portfolio.  Our goal here is to minimize the risk subject to our expected level of return.  We don’t think it is a good idea to put such a large amount of our portfolio into our new business adventure until we are able to produce and use the data from our own company insights to analyze how our decisions have affected our current business structure.  
+  
 2. How does your decision impact the business?
+- We feel that our decision will have the smallest impact on our current business operations, while we test our entry into the nickel market.  The capital reserves for this portfolio will be very similar to our current reserves other than a slight increase for the added risk of nickel.  In other words, we would not need to restructure our wealth significantly as with the other portfolios that carry more risk.  
+
 3. What are your recommendations?
 
 
