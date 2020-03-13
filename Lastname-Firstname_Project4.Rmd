@@ -1319,9 +1319,9 @@ Column
 
 
 ### Recommendations
-1. ??
-2. ??
-3. ??
+1. Why did you choose those weights (which model)?
+2. How does your decision impact the business?
+3. What are your recommendations?
 
 
 
