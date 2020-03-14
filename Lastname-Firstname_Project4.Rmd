@@ -1252,17 +1252,18 @@ Column
 
 - Aluminium is a metal which is used in a plethora of industries and markets.  It's relatively stable price is testament to this.  Moving aluminium from Brasil to West Coast USA for aircraft supply chains is a safe, long term freight line that ship owner's can use to mitigate risk.
 
-
 ### Recommendations
-1. Why did you choose those weights (which model)?
+
+
+Why did you choose those weights (which model)?
+
 - Because our portfolio of accounts receivables in the various metals contains only risky assets, we chose the minimum variance portfolio in order to minimize the volatility of the overall portfolio.  Our goal here is to minimize the risk subject to our expected level of return.  We don’t think it is a good idea to put such a large amount of our portfolio into our new business adventure until we are able to produce and use the data from our own company insights to analyze how our decisions have affected our current business structure.  
   
-2. How does your decision impact the business?
+How does your decision impact the business?
+
 - We feel that our decision will have the smallest impact on our current business operations, while we test our entry into the nickel market.  The capital reserves for this portfolio will be very similar to our current reserves other than a slight increase for the added risk of nickel.  In other words, we would not need to restructure our wealth significantly as with the other portfolios that carry more risk.  
 
-3. What are your recommendations?
-
-
+What are your recommendations?
 
 
 References
