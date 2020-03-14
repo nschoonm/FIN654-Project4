@@ -1,10 +1,9 @@
 ---
-title: 'Assignment #4'
-author: 'John Doe, Group 9'
+title: 'P #4'
+author: 'Schoonmaker'
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
-    source_code: embed
     theme: "spacelab"
 runtime: shiny
 ---
@@ -309,7 +308,7 @@ renderPlotly({
 
 
 
-Exploratory Analysis
+Exploratory
 =======================================================================
 
 Inputs {.sidebar}
@@ -783,7 +782,7 @@ showRM(fit, alpha = 0.99, RM = "ES", method = "BFGS")
 ```
 
 
-Optimization
+Opt
 ==========================================================
 
 Column {.tabset}
@@ -1259,6 +1258,7 @@ Column
 -------------------------------------------------------------------------
 
 ### Business Remarks
+
 
 - The working capital account of \$250 million euro should be allocated as follows: buy \$21,438,648 million in nickel, \$113,727,083 million in copper, \$114,834,269 million in aluminium.
 
