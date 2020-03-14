@@ -1,9 +1,10 @@
 ---
-title: 'P #4'
-author: 'Schoonmaker'
+title: 'Assignment #4'
+author: 'John Doe, Group 9'
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
+    source_code: embed
     theme: "spacelab"
 runtime: shiny
 ---
@@ -308,7 +309,7 @@ renderPlotly({
 
 
 
-Exploratory
+Exploratory Analysis
 =======================================================================
 
 Inputs {.sidebar}
@@ -782,7 +783,7 @@ showRM(fit, alpha = 0.99, RM = "ES", method = "BFGS")
 ```
 
 
-Opt
+Optimization
 ==========================================================
 
 Column {.tabset}
