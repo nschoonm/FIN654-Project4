@@ -122,29 +122,6 @@ where $\Large ES$ is "expected shortfall" and $\Large E$ is the expectation oper
 
 6. More importantly, begin to import your data into this model. You will have to modify some of the column subsets and all of the titles.
 
-Column
------------------------------------------------------------------------
-
-### Flexdashboard and plotly
-
-We continue to expand our range of production capabilities. Now we add some interactivity to the plots.
-
-1. Install the `plotly` packages. In RStudio console type `library(plotly)` or simply include this command in an Rmd script.
-
-2. Go to the RStudio `plotly` site to learn about the basics of of using `plotly` with `ggplot2`.
-
-3. Deposit code that reads data, transforms data and calculates various analytics such as the quantile regression fit from Assignments 3 and 4 into the `setup` (first) chunk of the. Begin to move any plots to code chunks in `###` panes in columns in pages in the growing `The Answer is 42` (or title of your choice) script. 
-
-4. Surround one of the `ggplot2` plots with `renderPlotly({ insert ggplot code here with ggplotly(p) where p is the ggplot2 plot object})`.
-
-5. `Run Document` and see the results.
-
-6. Continue to modify this template to document your own data analysis journey. 
-
-
-
-**THIS PROJECT ALSO SERVES AS A TEMPLATE FOR THE FINAL PROJECT**
-
 ```{r Get current directory}
 # Get the directory so we can run this from anywhere
 # Get the script directory from R when running in R
