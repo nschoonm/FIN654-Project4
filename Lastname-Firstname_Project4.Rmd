@@ -118,53 +118,8 @@ where $\Large ES$ is "expected shortfall" and $\Large E$ is the expectation oper
 
 6. More importantly, begin to import your data into this model. You will have to modify some of the column subsets and all of the titles.
 
-
-
-Instructions
-=======================================================================
-
 Column
 -----------------------------------------------------------------------
-
-### Assignment
-
-**THIS PROJECT ADDS PORTFOLIO ANALYTICS TO PROJECT 4**
-
-The project (4) is due before Live Session 10. Submit into **Coursework > Assignments and Grading > Assignment 4: Team Project 4 > Submission** an `RMD`  file 
-with filename **lastname_firstname_Assignment4.Rmd**. If you have difficulties submitting a `.Rmd` file, then submit a `.txt` file. 
-
-1. **Build a shiny/flexdashboard application**, using appropriate headers (##), r-chunks for code, and text.
-* library(flexdashboard)
-* library(shiny)
-
-2. **Study the Shiny interactive code in the Exploratory Analysis** in this file. Similar code will be required in the Final Project.
-* renderValueBox
-* renderPlotly
-
-3. **Address the Optimization (Markowitz models) and Conclusion portions ONLY** in this file, changing plots and outputs as you see fit.
-* Optimization
-* Conclusion
-
-4. **Research risk-free rate and replace in the code**.
-* Explain your choice of risk-free rate in the Conclusion.
-
-5. **Complete the $-value calculations** for the Conclusion.
-* Provide the data insights for portfolio optimization
-* Determine the weights and the buy/sell decisions when a) no constraints b) no negative weights allowed
-
-5. **List the 'R' skills needed to complete this project** in the Conclusion.
-* Briefly explain a few of the main functions used to compute and visualize results.
-
-6. **Choose the weights you want for your business** and discuss the business implications in the Conclusion.
-* Why did you choose those weights (which model)?
-* How does your decision impact the business?
-* What are your recommendations?
-
-
-
-Column
------------------------------------------------------------------------
-
 
 ### Flexdashboard and plotly
 
@@ -324,7 +279,6 @@ Column
 - Quandl for data
 - Github and Stack Overflow for trouble shooting
 - LME.com (London Metals Exchange)
-
 
 Column
 -----------------------------------------------------------------------
@@ -609,7 +563,6 @@ pairs.panels(corr.returns.df)
 
 - Losses for a barrel equivalent of the three commodities are computed back into the sample relative to the most recently observed prices
 
-
 Column {.tabset }
 -----------------------------------------------------------------------
 
@@ -714,8 +667,10 @@ renderPlotly({
 
 Extremes
 =======================================================================
+
 Column {.tabset}
 -----------------------------------------------------------------------
+
 ### Let's go to extremes
 
 - All along we have been stylizing financial returns, commodities and exchange rates, as skewed and with thick tails.
@@ -830,6 +785,7 @@ showRM(fit, alpha = 0.99, RM = "ES", method = "BFGS")
 
 Optimization
 ==========================================================
+
 Column {.tabset}
 ----------------------------------------------------------
 
@@ -1212,7 +1168,6 @@ Skills used in packaging and express of data in terms of graphs and tables are t
 10. acf() to compute (and by default plots) estimates of the autocovariance or autocorrelation function.
 11. pacf() is the function used for the partial autocorrelations.
 
-
 Column 
 -------------------------------------------------------------------------
 
@@ -1299,7 +1254,6 @@ name <- colnames(weights.x)
 posn <- ifelse((weights.x[inx,]<0), "go short (sell)", "go long, (buy)")
 value <- percent(abs(weights.x[inx,]))
 ```
-
 
 Column 
 -------------------------------------------------------------------------
