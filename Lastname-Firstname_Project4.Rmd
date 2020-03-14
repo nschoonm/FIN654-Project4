@@ -1,10 +1,14 @@
 ---
-title: 'Assignment #4'
-author: 'John Doe, Group 9'
+title: 'Project4'
+#author:
+#- Nicolas Schoonmaker
+#- Guillermo Delgado
+#- Katie Guillen
+#- Leanne Harper
+#date: "`r format(Sys.time(), '%m/%d/%Y')`"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
-    source_code: embed
     theme: "spacelab"
 runtime: shiny
 ---
@@ -309,7 +313,7 @@ renderPlotly({
 
 
 
-Exploratory Analysis
+Exploratory
 =======================================================================
 
 Inputs {.sidebar}
