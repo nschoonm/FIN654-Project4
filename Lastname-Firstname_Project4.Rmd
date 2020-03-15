@@ -1,6 +1,11 @@
 ---
 title: 'Project4'
-author: 'John Doe, Team 3'
+#author:
+#- Nicolas Schoonmaker
+#- Guillermo Delgado
+#- Katie Guillen
+#- Leanne Harper
+#date: "`r format(Sys.time(), '%m/%d/%Y')`"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -28,6 +33,8 @@ A freight forwarder with a fleet of bulk carriers wants to optimize their portfo
 4.	The company wants to mitigate their risk by diversifying their cargo loads
 
 ### Data and analysis to inform the decision
+
+Data analysis highlights:
 
 - Spot market prices of nickel, copper, and aluminium
 - Nickel and Copper: correlation
@@ -64,6 +71,8 @@ The London Metal Exchange (LME) is the world's centre for commodity exchange and
 - Negative returns are more likely than positive returns (left skew).
 
 ### Key business questions
+
+The following are the key business questions that will be answered in the conclusion section.
 
 1.	How would the performance of these commodities affect the size and timing of shipping arrangements?
 2.	How would the value of new shipping arrangements affect the value of our business with our current customers?
@@ -779,7 +788,7 @@ So that ...
 - Choquet integrals build on Lebesgue measures by inflating or deflating the probabilities by the rank order of the outcomes.
 - Expected shortfall is an example of a Choquet, rank-ordered, criterion.
 
-**Note the `risk-free rate` given is likely incorrect - `RESEARCH AND FIX`**
+**The risk-free rate was**
 
 - obtained from https://www.treasury.gov/resource-center/data-chart-center/interest-rates/pages/textview.aspx?data=yield
 - and using 253 (2020 is a leap year) number of trading days
@@ -1198,8 +1207,6 @@ weights.x[inx,]*250000000
 
 * 250,000,000 denominated in euros
 * Buy 250,000,000 in nickel
-
-** SAMPLE CODE OUTPUT **
 
 The weights for the Markowitz tangency [default] portfolio ("*") are
 
