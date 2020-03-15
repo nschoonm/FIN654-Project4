@@ -1263,7 +1263,7 @@ Why did you choose those weights (which model)?
   
 How does your decision impact the business?
 
-- We feel that our decision will have the smallest impact on our current business operations, while we test our entry into the nickel market.  The capital reserves for this portfolio will be very similar to our current reserves other than a slight increase for the added risk of nickel.  In other words, we would not need to restructure our wealth significantly as with the other portfolios that carry more risk.  
+- We feel that our decision will have the smallest impact on our current business operations, while we test our entry into the nickel market.  The capital reserves for this portfolio will be very similar to our current reserves other than a slight increase for the added risk of nickel.  In other words, we would not need to restructure our wealth significantly as with the other portfolios that carry more risk. In addition, the weights were all positive and would not result in any assets being short sold. We would not be borrowing any money from a broker or customer.
 
 What are your recommendations?
 
