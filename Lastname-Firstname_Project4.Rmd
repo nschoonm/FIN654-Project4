@@ -1,11 +1,6 @@
 ---
 title: 'Project4'
-#author:
-#- Nicolas Schoonmaker
-#- Guillermo Delgado
-#- Katie Guillen
-#- Leanne Harper
-#date: "`r format(Sys.time(), '%m/%d/%Y')`"
+author: 'John Doe, Team 3'
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
